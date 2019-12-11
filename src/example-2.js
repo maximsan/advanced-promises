@@ -1,7 +1,6 @@
 import { Promise as BlueBird } from "bluebird";
 
 /* asynchronous examples with async await */
-// const fetch = require("node-fetch");
 
 // const getGithubUserInfo = async function(userId) {
 //   const url = `https://api.github.com/users/${userId}`;
