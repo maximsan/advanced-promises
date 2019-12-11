@@ -6,6 +6,10 @@ const rootElement = document.getElementById("root");
 
 rootElement.innerHTML = `<div style="color:red; font-size: 1.25rem">Loading...</div>`;
 
+/* asynchronous examples with promise API */
+
+/* Only Promise ctor, Promise.resolve, Promise.reject */
+
 // fetch(`${apiURL}films`)
 //   .then(response => response.json())
 //   .then(films => (rootElement.innerHTML = getFilmsInfo(films)));
@@ -24,19 +28,21 @@ rootElement.innerHTML = `<div style="color:red; font-size: 1.25rem">Loading...</
 //     rootElement.innerHTML = `:(`;
 //   });
 
-function getFilmsInfo(films) {
-  return films
-    .sort((f1, f2) => f1.episode_id - f2.episode_id)
-    .map(
-      f =>
-        `<div style="margin-bottom: 1rem">${f.episode_id}. ${
-          f.title
-        }. <div style="margin-top: 0.25rem; margin-left:1.25rem"><span style="color:gold">Producer:</span> ${
-          f.producer
-        }</div></div>`
-    )
-    .join("\n");
-}
+// function getFilmsInfo(films) {
+//   return films
+//     .sort((f1, f2) => f1.episode_id - f2.episode_id)
+//     .map(
+//       f =>
+//         `<div style="margin-bottom: 1rem">${f.episode_id}. ${
+//           f.title
+//         }. <div style="margin-top: 0.25rem; margin-left:1.25rem"><span style="color:gold">Producer:</span> ${
+//           f.producer
+//         }</div></div>`
+//     )
+//     .join("\n");
+// }
+
+/* Promise all */
 
 // function queryAPI(endPoint) {
 //   return fetch(`${apiURL}/${endPoint}`).then(response => {
@@ -57,6 +63,8 @@ function getFilmsInfo(films) {
 //     rootElement.innerText = ":(";
 //   });
 
+/* async await with Promise all */
+
 async function queryAPI(endPoint) {
   const response = await fetch(`${apiURL}/${endPoint}`);
 
@@ -64,7 +72,7 @@ async function queryAPI(endPoint) {
     return response.json();
   }
 
-  throw Error("Unsuccessful request");
+  throw new Error("Unsuccessful request");
 }
 
 async function main() {
